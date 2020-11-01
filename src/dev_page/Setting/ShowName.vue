@@ -33,7 +33,6 @@
 </template>
 <script>
 import { Alert, Card, Button, FormGroupInput } from '@/components'
-import BookServices from '@/services/BookServices'
 
 export default {
 	name: 'showclass',

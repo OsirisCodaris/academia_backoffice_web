@@ -1,6 +1,13 @@
 /* eslint-disable vue/no-dupe-keys */
 <template>
 	<div>
+		<div id="toolbar">
+			<button id="remove" class="btn btn-danger" @click="deleteRows">
+				<i class="fa fa-trash"></i> Supprimer
+				<span v-if="selectRows.length">({{ selectRows.length }})</span>
+			</button>
+			<div class="fas fa-spinner fa-pulse m-2" v-if="isLoad"></div>
+		</div>
 		<BootstrapTable
 			ref="table"
 			:columns="head"
@@ -25,8 +32,10 @@ export default {
 	},
 	data() {
 		return {
+			isLoad: false,
 			selectRows: [],
 			options: {
+				toolbar: '#toolbar',
 				sortable: true,
 				search: true,
 				pagination: true,
@@ -65,13 +74,12 @@ export default {
 	methods: {
 		check(row) {
 			this.selectRows.push(row)
-			this.$emit('check', this.selectRows)
 		},
 		unCheck(rows) {
 			this.selectRows = this.selectRows.filter((el) => el.name !== rows.name)
-			this.$emit('check', this.selectRows)
 		},
 		refresh() {
+			this.isLoad = false
 			this.$refs.table.refresh()
 		},
 		refreshed() {
@@ -80,6 +88,10 @@ export default {
 		},
 		addRow() {
 			this.$emit('addRow')
+		},
+		deleteRows() {
+			this.isLoad = true
+			this.$emit('deleteRows', this.selectRows)
 		},
 	},
 	async mounted() {

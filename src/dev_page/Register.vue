@@ -2,10 +2,11 @@
 	<div class="page-header clear-filter" filter-color="green">
 		<div
 			class="page-header-image"
-			style="background-image: url('image/register.jpg')"
+			style="background-image: url('../../public/image/register.jpg')"
 		></div>
 		<div class="content ">
 			<div class="container ">
+				<h1>Site en Maintenance</h1>
 				<div class="col-md-8 ml-auto mr-auto ">
 					<card type="login" plain>
 						<div slot="header" class="logo-container">

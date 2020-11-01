@@ -3,16 +3,19 @@ import config from './Config'
 import Api from './Api'
 export default {
 	index() {
-		return Api().get('classes')
+		return Api().get('documents')
 	},
 	insert(formData) {
-		return Api().post('classes', formData)
+		return Api().post('documents', formData)
 	},
-	update(form) {
-		return Api().put(`classes/${form.row.idclasses}/`, { name: form.name })
+	show(id) {
+		return Api().get(`documents/${id}/`)
+	},
+	update(id, form) {
+		return Api().put(`documents/${id}`, form)
 	},
 	delete(form) {
-		return Api().delete(`classes/${form.idclasses}/`)
+		return Api().delete(`documents/${form.iddocuments}/`)
 	},
 	url() {
 		return config.baseUrl + 'documents'
