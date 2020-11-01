@@ -23,6 +23,7 @@ import Slider from './Slider.vue'
 
 import Pagination from './Pagination.vue'
 import Tables from './Tables.vue'
+import TableDoc from './TableDoc.vue'
 
 export {
 	Alert,
@@ -47,4 +48,5 @@ export {
 	Slider,
 	Button,
 	Tables,
+	TableDoc,
 }

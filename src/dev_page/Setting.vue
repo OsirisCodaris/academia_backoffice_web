@@ -1,16 +1,16 @@
 <template>
 	<div class="starter-page">
 		<div class="section text-center">
-			<add-book />
+			<register />
 		</div>
 	</div>
 </template>
 <script>
-import AddBook from '@/dev_page/Setting/AddBook.vue'
+import Register from '@/dev_page/Register.vue'
 export default {
 	name: 'starter',
 	components: {
-		AddBook,
+		Register,
 	},
 }
 </script>

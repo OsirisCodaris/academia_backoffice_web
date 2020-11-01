@@ -1,6 +1,5 @@
 <template>
 	<div id="app">
-		mop
 		<router-view name="header" />
 		<div class="wrapper">
 			<router-view />

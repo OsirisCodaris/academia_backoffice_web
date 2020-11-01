@@ -1,17 +1,17 @@
 <template>
-	<div class="subject-page">
+	<div class="TypeDoc-page">
 		<div class="section text-center">
 			<panel
 				ref="panel"
-				title="Gestion des Matières"
+				title="Gestion des Catégories"
 				:columns="headers"
-				:data="Subjects"
+				:data="TypeDocs"
 				@checked="checked"
 			>
 				<template slot="show">
 					<show-name
-						title="Subjects"
-						:data="SubjectSelected"
+						title="TypeDocs"
+						:data="TypeDocSelected"
 						@delete="deleted"
 						@update="updated"
 						@insert="insert"
@@ -29,10 +29,10 @@
 import { Alert, Card, Button, FormGroupInput } from '@/components'
 import ShowName from '@/dev_page/Setting/ShowName'
 import Panel from '@/dev_page/Setting/Panel'
-import SubjectService from '@/services/SubjectService'
+import TypeDocService from '@/services/TypeDocService'
 
 export default {
-	name: 'Subjects',
+	name: 'TypeDocs',
 	components: {
 		Card,
 		Alert,
@@ -43,8 +43,8 @@ export default {
 	},
 	data() {
 		return {
-			Subjects: SubjectService.url(),
-			SubjectSelected: [],
+			TypeDocs: TypeDocService.url(),
+			TypeDocSelected: [],
 			error: false,
 			message: false,
 			headers: [
@@ -54,7 +54,7 @@ export default {
 				},
 				{
 					title: 'ID',
-					field: 'idsubjects',
+					field: 'idtypedocs',
 					sortable: true,
 				},
 				{
@@ -67,14 +67,14 @@ export default {
 	},
 	methods: {
 		checked(rows) {
-			this.SubjectSelected = rows
+			this.TypeDocSelected = rows
 		},
 		async insert(form) {
 			try {
 				this.error = false
 				this.message = false
-				const response = (await SubjectService.insert(form)).data
-				this.message = 'Matière ajouté avec succès ' + response.idsubjects
+				const response = (await TypeDocService.insert(form)).data
+				this.message = 'Catégorie ajouté avec succès ' + response.idtypedocs
 				this.$refs.panel.refresh()
 			} catch (error) {
 				this.error = error.response.data.error
@@ -84,8 +84,8 @@ export default {
 			try {
 				this.error = false
 				this.message = false
-				const response = (await SubjectService.update(row)).data
-				this.message = 'Nom de la Matière modifiée '
+				const response = (await TypeDocService.update(row)).data
+				this.message = 'Nom de la Catégorie modifiée '
 				this.$refs.panel.refresh()
 			} catch (error) {
 				this.error = error.response.data.error
@@ -96,8 +96,8 @@ export default {
 				await rows.forEach(async (row) => {
 					this.error = false
 					this.message = false
-					const response = await SubjectService.delete(row)
-					this.message = 'Matières supprimés'
+					const response = await TypeDocService.delete(row)
+					this.message = 'Catégories supprimés'
 					this.$refs.panel.refresh()
 				})
 			} catch (error) {
@@ -109,7 +109,7 @@ export default {
 }
 </script>
 <style>
-.subject-page {
+.TypeDoc-page {
 	min-height: calc(100vh - 95px);
 }
 </style>

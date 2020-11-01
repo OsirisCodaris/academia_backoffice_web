@@ -17,7 +17,10 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
-
+import VuejsDialog from 'vuejs-dialog'
+import VuejsDialogMixin from 'vuejs-dialog/dist/vuejs-dialog-mixin.min.js' // only needed in custom components
+// include the default style
+import 'vuejs-dialog/dist/vuejs-dialog.min.css'
 import { sync } from 'vuex-router-sync'
 // You can change this import to `import router from './starterRouter'` to quickly start development from a blank layout.
 //import router from './starterRouter';
@@ -25,6 +28,9 @@ import router from './starterRouter'
 import store from './store/store'
 import NowUiKit from './plugins/now-ui-kit'
 Vue.use(BootstrapVue)
+// Tell Vue to install the plugin.
+Vue.use(VuejsDialog)
+Vue.use(VuejsDialogMixin)
 
 Vue.config.productionTip = false
 sync(store, router)
