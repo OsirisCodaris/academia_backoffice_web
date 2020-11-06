@@ -10,7 +10,7 @@
 			>
 				<template slot="show">
 					<show-name
-						title="TypeDocs"
+						title="Catégories"
 						:data="TypeDocSelected"
 						@delete="deleted"
 						@update="updated"

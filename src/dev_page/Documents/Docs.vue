@@ -165,7 +165,6 @@ export default {
 				this.doc = response.doc
 				this.$refs.add.setData(this.doc)
 			} catch (error) {
-				console.log(error)
 				this.error = error.response.data.error
 			}
 			this.modals.classic = true
@@ -177,8 +176,8 @@ export default {
 					this.message = false
 					const response = await DocService.delete(row)
 					this.message = 'Documents supprimés'
+					this.refreshTable()
 				})
-				this.refreshTable()
 			} catch (error) {
 				this.error = error.response.data.error
 				this.refreshTable()

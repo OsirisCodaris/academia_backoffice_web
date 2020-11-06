@@ -6,9 +6,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	strict: true,
 	state: {
+		refreshToken: null,
 		token: null,
 		user: null,
-		isUserLoggedIn: true,
+		isUserLoggedIn: false,
 	},
 	mutations: {
 		setToken(state, token) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
 			} else {
 				state.isUserLoggedIn = false
 			}
+		},
+		setRefresh(state, refreshToken) {
+			state.refreshToken = refreshToken
 		},
 		setUser(state, user) {
 			state.user = user
@@ -29,6 +33,9 @@ export default new Vuex.Store({
 		},
 		setUser({ commit }, user) {
 			commit('setUser', user)
+		},
+		setRefresh({ commit }, refreshToken) {
+			commit('setRefresh', refreshToken)
 		},
 	},
 })

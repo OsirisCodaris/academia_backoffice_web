@@ -15,7 +15,7 @@
 				type="String"
 				class="no-border input-lg"
 				addon-left-icon="now-ui-icons users_circle-08"
-				:placeholder="name || 'Titre du document...'"
+				:placeholder="name || 'Entrez le nom...'"
 				v-model="form.name"
 				@click="resetData"
 			>

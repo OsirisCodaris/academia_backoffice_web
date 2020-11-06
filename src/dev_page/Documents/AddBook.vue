@@ -236,6 +236,9 @@ export default {
 					this.existAns = doc.docAnswer.pathfile
 					this.form.statusAns = doc.docAnswer.status
 				}
+				if (doc.Notion) {
+					this.form.notion = doc.Notion.notions
+				}
 
 				if (doc.docInSubjectClasses) {
 					this.selectedSubject = doc.docInSubjectClasses[0].idsubjects
@@ -323,6 +326,9 @@ export default {
 			if (this.form.ans) {
 				formData.append('answerfile', this.form.ans)
 				formData.append('answerstatus', this.form.statusAns)
+			}
+			if (this.form.notion) {
+				formData.append('notions', this.form.notion)
 			}
 			if (this.selectedType != -1) {
 				formData.append('idtypedocs', this.selectedType)

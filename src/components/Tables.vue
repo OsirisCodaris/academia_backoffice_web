@@ -52,7 +52,15 @@ export default {
 			this.$emit('check', this.selectRows)
 		},
 		unCheck(rows) {
-			this.selectRows = this.selectRows.filter((el) => el.name !== rows.name)
+			this.selectRows = this.selectRows.filter((el) => {
+				//if rows is classe subject typedocs
+				if (el.name) {
+					return el.name !== rows.name
+				} else {
+					//if rows is admin
+					return el.User.fullname !== rows.User.fullname
+				}
+			})
 			this.$emit('check', this.selectRows)
 		},
 		refresh() {

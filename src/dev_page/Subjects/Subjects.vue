@@ -10,7 +10,7 @@
 			>
 				<template slot="show">
 					<show-name
-						title="Subjects"
+						title="Matières"
 						:data="SubjectSelected"
 						@delete="deleted"
 						@update="updated"

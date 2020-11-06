@@ -4,9 +4,9 @@ import Starter from './pages/StarterPage.vue'
 import StarterNavbar from './layout/StarterNavbar.vue'
 import StarterFooter from './layout/StarterFooter.vue'
 import Login from './dev_page/Login.vue'
-import Register from './dev_page/Register.vue'
-import Book from './dev_page/Book.vue'
 import Classes from './dev_page/Classes/Classes.vue'
+import DashBoard from './dev_page/Dashboard.vue'
+
 import ClasseSubject from './dev_page/Classes/ClasseSubject.vue'
 
 import Subjects from './dev_page/Subjects/Subjects.vue'
@@ -15,9 +15,10 @@ import Docs from './dev_page/Documents/Docs.vue'
 
 import Setting from './dev_page/Setting.vue'
 
-Vue.use(Router)
+import store from '@/store/store'
 
-export default new Router({
+Vue.use(Router)
+let router = new Router({
 	routes: [
 		{
 			path: '/',
@@ -34,6 +35,29 @@ export default new Router({
 				footer: {
 					backgroundColor: 'black',
 				},
+			},
+			meta: {
+				guest: true,
+			},
+		},
+		{
+			path: '/dashboard',
+			name: 'dashboard',
+			components: {
+				default: DashBoard,
+				header: StarterNavbar,
+				footer: StarterFooter,
+			},
+			props: {
+				header: {
+					colorOnScroll: 400,
+				},
+				footer: {
+					backgroundColor: 'black',
+				},
+			},
+			meta: {
+				requiresAuth: true,
 			},
 		},
 		{
@@ -52,39 +76,8 @@ export default new Router({
 					backgroundColor: 'black',
 				},
 			},
-		},
-		{
-			path: '/register',
-			name: 'register',
-			components: {
-				default: Register,
-				header: StarterNavbar,
-				footer: StarterFooter,
-			},
-			props: {
-				header: {
-					colorOnScroll: 400,
-				},
-				footer: {
-					backgroundColor: 'black',
-				},
-			},
-		},
-		{
-			path: '/book',
-			name: 'book',
-			components: {
-				default: Book,
-				header: StarterNavbar,
-				footer: StarterFooter,
-			},
-			props: {
-				header: {
-					colorOnScroll: 400,
-				},
-				footer: {
-					backgroundColor: 'black',
-				},
+			meta: {
+				guest: true,
 			},
 		},
 		{
@@ -103,6 +96,9 @@ export default new Router({
 					backgroundColor: 'black',
 				},
 			},
+			meta: {
+				requiresAuth: true,
+			},
 		},
 		{
 			path: '/classesubjects',
@@ -119,6 +115,9 @@ export default new Router({
 				footer: {
 					backgroundColor: 'black',
 				},
+			},
+			meta: {
+				requiresAuth: true,
 			},
 		},
 		{
@@ -137,6 +136,9 @@ export default new Router({
 					backgroundColor: 'black',
 				},
 			},
+			meta: {
+				requiresAuth: true,
+			},
 		},
 		{
 			path: '/typedocs',
@@ -153,6 +155,9 @@ export default new Router({
 				footer: {
 					backgroundColor: 'black',
 				},
+			},
+			meta: {
+				requiresAuth: true,
 			},
 		},
 		{
@@ -171,6 +176,9 @@ export default new Router({
 					backgroundColor: 'black',
 				},
 			},
+			meta: {
+				requiresAuth: true,
+			},
 		},
 		{
 			path: '/setting',
@@ -188,6 +196,10 @@ export default new Router({
 					backgroundColor: 'black',
 				},
 			},
+			meta: {
+				requiresAuth: true,
+				is_codaris: true,
+			},
 		},
 	],
 	scrollBehavior: (to) => {
@@ -203,3 +215,35 @@ export default new Router({
 		}
 	},
 })
+
+router.beforeEach((to, from, next) => {
+	if (to.matched.some((record) => record.meta.requiresAuth)) {
+		if (store.state.token == null) {
+			next({
+				path: '/login',
+				params: { nextUrl: to.fullPath },
+			})
+		} else {
+			let user = store.state.user
+			if (to.matched.some((record) => record.meta.is_codaris)) {
+				if (user.role == 'CODARIS') {
+					next()
+				} else {
+					next({ name: 'dashboard' })
+				}
+			} else {
+				next()
+			}
+		}
+	} else if (to.matched.some((record) => record.meta.guest)) {
+		if (store.state.token == null) {
+			next()
+		} else {
+			next({ name: 'dashboard' })
+		}
+	} else {
+		next()
+	}
+})
+
+export default router
