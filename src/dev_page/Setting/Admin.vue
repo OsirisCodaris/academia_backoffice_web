@@ -115,7 +115,7 @@ export default {
 	},
 	methods: {
 		setData(data) {
-			this.idadmins = -1
+			this.idadmins = 0
 			this.form = {
 				user: {
 					fullname: this.name,
@@ -141,7 +141,7 @@ export default {
 			this.$emit('delete', this.data)
 		},
 		register() {
-			if (this.idadmins != -1) {
+			if (this.idadmins != 0) {
 				this.$emit(
 					'update',
 					{ row: this.form, id: this.idadmins },

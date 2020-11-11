@@ -1,6 +1,8 @@
 <template>
 	<div class="class-page">
 		<div class="section text-center">
+			<vue-confirm-dialog></vue-confirm-dialog>
+
 			<div class="m-2">
 				<alert type="danger" v-if="error" class="col-12">{{ error }}</alert>
 				<alert type="success" v-if="message" class="col-12">{{
@@ -45,6 +47,8 @@ import {
 import AddBook from '@/dev_page/Documents/AddBook'
 import DocService from '@/services/DocService'
 import CustomView from './AddBook.vue'
+import config from '@/services/Config'
+
 function operateFormatter(value, row, index) {
 	return '<a class="like" href="javascript:void(0)" title="Modifier"><i class="fa fa-edit"></i></a>'
 }
@@ -171,13 +175,41 @@ export default {
 		},
 		async deleted(rows) {
 			try {
-				await rows.forEach(async (row) => {
-					this.error = false
-					this.message = false
-					const response = await DocService.delete(row)
-					this.message = 'Documents supprimés'
+				if (rows.length) {
+					this.$confirm({
+						auth: true,
+						message: 'Voulez-vous vraiment supprimer ?',
+						button: {
+							yes: 'Continuer',
+							no: 'Annuler',
+						},
+						/**
+						 * Callback Function
+						 * @param {Boolean} confirm
+						 * @param {String} password
+						 */
+						callback: async (confirm, password) => {
+							if (confirm && password == config.password) {
+								await rows.forEach(async (row) => {
+									this.error = false
+									this.message = false
+									const response = await DocService.delete(row)
+									this.message = 'Documents supprimés'
+									this.refreshTable()
+								})
+							} else if (confirm && password != config.password) {
+								alert('Mauvais mot de passe')
+								this.refreshTable()
+							} else {
+								this.refreshTable()
+							}
+						},
+					})
+				} else {
 					this.refreshTable()
-				})
+				}
+
+				/*	*/
 			} catch (error) {
 				this.error = error.response.data.error
 				this.refreshTable()

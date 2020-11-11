@@ -1,6 +1,7 @@
 <template>
 	<div class="Admin-page">
 		<div class="section text-center">
+			<vue-confirm-dialog></vue-confirm-dialog>
 			<panel
 				ref="panel"
 				title="Gestion des Administrateurs"
@@ -31,6 +32,8 @@ import { Alert, Card, Button, FormGroupInput } from '@/components'
 import Admin from '@/dev_page/Setting/Admin'
 import Panel from '@/dev_page/Setting/Panel'
 import AdminService from '@/services/AdminService'
+import config from '@/services/Config'
+
 function operateFormatter(value, row, index) {
 	return '<a class="like" href="javascript:void(0)" title="Modifier"><i class="fa fa-edit"></i></a>'
 }
@@ -144,13 +147,36 @@ export default {
 		},
 		async deleted(rows) {
 			try {
-				await rows.forEach(async (row) => {
-					this.error = false
-					this.message = false
-					const response = await AdminService.delete(row)
-					this.message = 'Administrateurs supprimés'
-					this.$refs.panel.refresh()
-				})
+				if (rows.length) {
+					this.$confirm({
+						auth: true,
+						message: 'Voulez-vous vraiment supprimer ?',
+						button: {
+							yes: 'Continuer',
+							no: 'Annuler',
+						},
+						/**
+						 * Callback Function
+						 * @param {Boolean} confirm
+						 * @param {String} password
+						 */
+						callback: async (confirm, password) => {
+							if (confirm && password == config.password) {
+								await rows.forEach(async (row) => {
+									this.error = false
+									this.message = false
+									const response = await AdminService.delete(row)
+									this.message = 'Administrateurs supprimés'
+									this.$refs.panel.refresh()
+								})
+							} else if (confirm && password != config.password) {
+								alert('Mauvais mot de passe')
+							}
+						},
+					})
+				} else {
+					this.refreshTable()
+				}
 			} catch (error) {
 				this.error = error.response.data.error
 				this.$refs.panel.refresh()

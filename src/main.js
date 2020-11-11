@@ -19,6 +19,7 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
 import VuejsDialog from 'vuejs-dialog'
 import VuejsDialogMixin from 'vuejs-dialog/dist/vuejs-dialog-mixin.min.js' // only needed in custom components
+import VueConfirmDialog from 'vue-confirm-dialog'
 // include the default style
 import 'vuejs-dialog/dist/vuejs-dialog.min.css'
 import { sync } from 'vuex-router-sync'
@@ -32,11 +33,13 @@ Vue.use(BootstrapVue)
 Vue.use(VuejsDialog)
 Vue.use(VuejsDialogMixin)
 
+//Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
+
 Vue.config.productionTip = false
 sync(store, router)
 import './plugins/table.js'
 Vue.use(NowUiKit)
-
+Vue.use(VueConfirmDialog)
 new Vue({
 	router,
 	store,

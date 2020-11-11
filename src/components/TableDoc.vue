@@ -23,8 +23,10 @@
 <script>
 import tableMixin from '../mixins/table'
 import ClasseService from '@/services/ClasseService'
+import config from '@/services/Config'
 
 export default {
+	name: 'tabledoc',
 	mixins: [tableMixin],
 	props: {
 		head: Array,

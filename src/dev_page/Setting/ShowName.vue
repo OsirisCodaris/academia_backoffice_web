@@ -2,6 +2,7 @@
 	<card raised>
 		<h4 class="card-title">
 			<div class="row">
+				<vue-confirm-dialog></vue-confirm-dialog>
 				<div class="text-left text-muted col-6">
 					{{ title }}
 				</div>
@@ -33,7 +34,7 @@
 </template>
 <script>
 import { Alert, Card, Button, FormGroupInput } from '@/components'
-
+import config from '@/services/Config'
 export default {
 	name: 'showclass',
 	props: {
@@ -71,7 +72,28 @@ export default {
 	},
 	methods: {
 		deleted() {
-			this.$emit('delete', this.data)
+			if (this.data.length >= 1) {
+				this.$confirm({
+					auth: true,
+					message: 'Voulez-vous vraiment supprimer ?',
+					button: {
+						yes: 'Continuer',
+						no: 'Annuler',
+					},
+					/**
+					 * Callback Function
+					 * @param {Boolean} confirm
+					 * @param {String} password
+					 */
+					callback: (confirm, password) => {
+						if (confirm && password == config.password) {
+							this.$emit('delete', this.data)
+						} else if (confirm && password != config.password) {
+							alert('Mauvais mot de passe')
+						}
+					},
+				})
+			}
 		},
 		register() {
 			if (this.data.length === 1) {
