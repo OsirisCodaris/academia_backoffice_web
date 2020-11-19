@@ -3,7 +3,7 @@
 		<template slot-scope="">
 			<router-link class="navbar-brand" to="/">
 				<img src="logo.png" width="40" />
-				Académia
+				Academia
 			</router-link>
 		</template>
 		<template slot="navbar-menu">

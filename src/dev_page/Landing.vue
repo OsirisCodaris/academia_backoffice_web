@@ -1,24 +1,35 @@
 <template>
 	<div>
-		<div class="page-header page-header-small">
+		<div class="page-header clear-filter" filter-color="dark">
 			<parallax
 				class="page-header-image"
-				style="background-image: url('img/bg6.jpg')"
+				style="background-image:url('img/dev/diplome.jpg')"
 			>
 			</parallax>
-			<div class="content-center">
-				<div class="container">
-					<h1 class="title">This is our great company.</h1>
-					<div class="text-center">
-						<a href="#pablo" class="btn btn-primary btn-icon btn-round">
-							<i class="fab fa-facebook-square"></i>
-						</a>
-						<a href="#pablo" class="btn btn-primary btn-icon btn-round">
-							<i class="fab fa-twitter"></i>
-						</a>
-						<a href="#pablo" class="btn btn-primary btn-icon btn-round">
-							<i class="fab fa-google-plus"></i>
-						</a>
+			<div class="container m-5">
+				<div class="row ">
+					<div class="col-md-8">
+						<div class="content-center brand">
+							<img class="n-logo" src="logo.png" alt="" />
+							<h1 class="h1-seo">Academia Gabon</h1>
+							<h3>Découvrez notre application</h3>
+							<h5 class="description">
+								According to the National Oceanic and Atmospheric
+								Administration, Ted, Scambos, NSIDClead scentist, puts the
+								potentially record low maximum sea ice extent tihs year down to
+								low ice extent in the Pacific and a late drop in ice extent in
+								the Barents Sea.
+							</h5>
+							<img
+								src="img/dev/playstore.png"
+								width="200"
+								alt=""
+								class="img-fluid"
+							/>
+						</div>
+					</div>
+					<div class="col-md-4 content-right">
+						<img src="img/dev/phone1.png" alt="" class="img-fluid" />
 					</div>
 				</div>
 			</div>
@@ -27,7 +38,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 ml-auto mr-auto text-center">
-						<h2 class="title">Who we are?</h2>
+						<h2 class="title">Academia Gabon, C'est quoi?</h2>
 						<h5 class="description">
 							According to the National Oceanic and Atmospheric Administration,
 							Ted, Scambos, NSIDClead scentist, puts the potentially record low
@@ -42,33 +53,31 @@
 						<div class="col-md-6">
 							<div
 								class="image-container image-left"
-								style="background-image: url('img/login.jpg')"
+								style="background-image: url('img/dev/circular.jpg')"
 							>
 								<!-- First image on the left side -->
 								<p class="blockquote blockquote-primary">
-									"Over the span of the satellite record, Arctic sea ice has
-									been declining significantly, while sea ice in the
-									Antarctichas increased very slightly"
+									"Les épreuves et corrigés disponibles me permettent de mieux
+									travailler et préparer mes examens"
 									<br />
 									<br />
-									<small>-NOAA</small>
+									<small>-YOAN, Seconde S</small>
 								</p>
 							</div>
 							<!-- Second image on the left side of the article -->
 							<div
 								class="image-container"
-								style="background-image: url('img/bg3.jpg')"
+								style="background-image: url('img/dev/diagram.png')"
 							></div>
 						</div>
 						<div class="col-md-5">
 							<!-- First image on the right side, above the article -->
 							<div
 								class="image-container image-right"
-								style="background-image: url('img/bg1.jpg')"
+								style="background-image: url('img/dev/circle.jpg')"
 							></div>
 							<h3>
-								So what does the new record for the lowest level of winter ice
-								actually mean
+								Construire la plus grande base de données numériques académiques
 							</h3>
 							<p>
 								The Arctic Ocean freezes every winter and much of the sea-ice
@@ -103,7 +112,7 @@
 		</div>
 		<div class="section section-team text-center">
 			<div class="container">
-				<h2 class="title">Here is our team</h2>
+				<h2 class="title">Notre Equipe</h2>
 				<div class="team">
 					<div class="row">
 						<div class="col-md-4">
@@ -113,8 +122,8 @@
 									alt="Thumbnail Image"
 									class="rounded-circle img-fluid img-raised"
 								/>
-								<h4 class="title">Romina Hadid</h4>
-								<p class="category text-primary">Model</p>
+								<h4 class="title">Sévérin OLLOMO</h4>
+								<p class="category text-primary">Enseignant Mathématiques</p>
 								<p class="description">
 									You can write here details about one of your team members. You
 									can give more details about what they do. Feel free to add
@@ -139,8 +148,10 @@
 									alt="Thumbnail Image"
 									class="rounded-circle img-fluid img-raised"
 								/>
-								<h4 class="title">Ryan Tompson</h4>
-								<p class="category text-primary">Designer</p>
+								<h4 class="title">Abba KOMI</h4>
+								<p class="category text-primary">
+									Enseignant Sciences Physiques
+								</p>
 								<p class="description">
 									You can write here details about one of your team members. You
 									can give more details about what they do. Feel free to add
@@ -162,8 +173,8 @@
 									alt="Thumbnail Image"
 									class="rounded-circle img-fluid img-raised"
 								/>
-								<h4 class="title">Eva Jenner</h4>
-								<p class="category text-primary">Fashion</p>
+								<h4 class="title">varney TSOUNGHAT</h4>
+								<p class="category text-primary">CEO CODARIS</p>
 								<p class="description">
 									You can write here details about one of your team members. You
 									can give more details about what they do. Feel free to add
@@ -187,20 +198,22 @@
 		</div>
 		<div class="section section-contact-us text-center">
 			<div class="container">
-				<h2 class="title">Want to work with us?</h2>
-				<p class="description">Your project is very important to us.</p>
+				<h2 class="title">Contactez nous?</h2>
+				<p class="description">
+					Vos questions et remarques sont très importantes pour nous.
+				</p>
 				<div class="row">
 					<div class="col-lg-6 text-center ml-auto mr-auto col-md-8">
 						<fg-input
 							class="input-lg"
-							placeholder="First Name..."
+							placeholder="Votre Nom..."
 							v-model="form.firstName"
 							addon-left-icon="now-ui-icons users_circle-08"
 						>
 						</fg-input>
 						<fg-input
 							class="input-lg"
-							placeholder="Email Here..."
+							placeholder="Votre Email..."
 							v-model="form.email"
 							addon-left-icon="now-ui-icons ui-1_email-85"
 						>
@@ -212,12 +225,12 @@
 								rows="4"
 								cols="80"
 								v-model="form.message"
-								placeholder="Type a message..."
+								placeholder="Ecrivez votre message..."
 							></textarea>
 						</div>
 						<div class="send-button">
 							<n-button type="primary" round block size="lg"
-								>Send Message</n-button
+								>Envoyez votre message</n-button
 							>
 						</div>
 					</div>

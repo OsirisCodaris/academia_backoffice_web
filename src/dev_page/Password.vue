@@ -11,37 +11,34 @@
 						<div class="text-center" slot="header">
 							<img v-lazy="'logo.png'" alt="" style="width: 250px" />
 						</div>
-
-						<fg-input
-							class="no-border input-lg"
-							addon-left-icon="now-ui-icons users_circle-08"
-							placeholder="Nom complet..."
-							v-model="form.fullname"
-						>
-						</fg-input>
-
+						<h2>Nouveau Mot de Passe</h2>
 						<fg-input
 							class="no-border input-lg"
 							addon-left-icon="now-ui-icons objects_key-25"
-							placeholder="Mot de passe..."
+							placeholder="Entrez Votre Mot de Passe..."
 							type="password"
-							v-model="form.password"
+							v-model="password"
 						>
 						</fg-input>
+						<fg-input
+							class="no-border input-lg"
+							addon-left-icon="now-ui-icons objects_key-25"
+							placeholder="Confirmez Votre Mot de Passe..."
+							type="password"
+							v-model="confirm"
+						>
+						</fg-input>
+						<alert type="success" v-if="message" class="col-12">{{
+							message
+						}}</alert>
+
 						<alert type="danger" v-if="error" class="col-12">{{ error }}</alert>
 						<template slot="raw-content">
 							<div class="card-footer text-center">
-								<n-button type="default" @click="login" round class="col-6"
-									>Connexion
+								<n-button type="default" @click="login" round
+									>Modifier
 									<div class="fas fa-spinner fa-pulse" v-if="isloading"></div>
 								</n-button>
-							</div>
-							<div class="pull-right">
-								<h6>
-									<a href="#/forget-password" class="link footer-link"
-										>Mot de passe oublié?</a
-									>
-								</h6>
 							</div>
 						</template>
 					</card>
@@ -55,7 +52,7 @@ import { Alert, Card, Button, FormGroupInput } from '@/components'
 import AuthentificationServices from '@/services/AuthentificationServices'
 import localStore from '@/store/localstorageservice.js'
 export default {
-	name: 'login-page',
+	name: 'password',
 	bodyClass: 'login-page',
 	components: {
 		Card,
@@ -66,11 +63,10 @@ export default {
 	data() {
 		return {
 			isloading: false,
-			form: {
-				fullname: '',
-				password: '',
-			},
+			password: '',
+			confirm: '',
 			error: false,
+			message: false,
 		}
 	},
 	methods: {
@@ -78,41 +74,27 @@ export default {
 			try {
 				this.isloading = true
 				this.error = false
-				if (this.form) {
-					const response = (await AuthentificationServices.login(this.form))
-						.data
-					this.$store.dispatch('setUser', {
-						idusers: response.idusers,
-						fullname: response.fullname,
-						email: response.email,
-						role: response.role,
-					})
-					if (
-						this.$store.state.user.role == 'CODARIS' ||
-						this.$store.state.user.role == 'ACADEMIA'
-					) {
-						localStore.setToken({
-							access_token: response.token,
-							refresh_token: response.refreshToken,
+				this.message = false
+				if (this.password.length >= 8 && this.password == this.confirm) {
+					const response = (
+						await AuthentificationServices.newPassword({
+							resetToken: this.$route.params.resettoken,
+							password: this.password,
 						})
-						this.$store.dispatch('setToken', response.token)
-						this.$store.dispatch('setRefresh', response.refreshToken)
-					} else {
-						throw new Error('Veuillez vous connecté via notre application')
-					}
-
+					).data
 					this.isloading = false
-					if (this.$route.params.nextUrl != null) {
-						this.$router.push(this.$route.params.nextUrl)
-					} else {
-						this.$router.push('/dashboard')
-					}
+					this.message = response.message
+				} else if (this.password.length < 8) {
+					this.isloading = false
+
+					this.error = 'Le mot de passe doit contenir au moins 8 caractères'
+				} else {
+					this.isloading = false
+					this.error = 'Les mot de passe ne correspondent pas!'
 				}
 			} catch (error) {
 				this.isloading = false
-
-				console.log(error)
-				this.error = error.response ? error.response.data.message : error
+				this.error = error.response ? error.response.data.error : error
 			}
 		},
 	},

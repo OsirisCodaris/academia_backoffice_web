@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Starter from './pages/StarterPage.vue'
+import Landing from './dev_page/Landing.vue'
 import StarterNavbar from './layout/StarterNavbar.vue'
 import StarterFooter from './layout/StarterFooter.vue'
 import Login from './dev_page/Login.vue'
+import ForgetPassword from './dev_page/ForgetPassword.vue'
+import Password from './dev_page/Password.vue'
 import Classes from './dev_page/Classes/Classes.vue'
 import DashBoard from './dev_page/Dashboard.vue'
 
@@ -22,9 +24,9 @@ let router = new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'index',
+			name: 'landing',
 			components: {
-				default: Starter,
+				default: Landing,
 				header: StarterNavbar,
 				footer: StarterFooter,
 			},
@@ -65,6 +67,46 @@ let router = new Router({
 			name: 'login',
 			components: {
 				default: Login,
+				header: StarterNavbar,
+				footer: StarterFooter,
+			},
+			props: {
+				header: {
+					colorOnScroll: 400,
+				},
+				footer: {
+					backgroundColor: 'black',
+				},
+			},
+			meta: {
+				guest: true,
+			},
+		},
+		{
+			path: '/forget-password',
+			name: 'forget',
+			components: {
+				default: ForgetPassword,
+				header: StarterNavbar,
+				footer: StarterFooter,
+			},
+			props: {
+				header: {
+					colorOnScroll: 400,
+				},
+				footer: {
+					backgroundColor: 'black',
+				},
+			},
+			meta: {
+				guest: true,
+			},
+		},
+		{
+			path: '/password/:resettoken',
+			name: 'password',
+			components: {
+				default: Password,
 				header: StarterNavbar,
 				footer: StarterFooter,
 			},
