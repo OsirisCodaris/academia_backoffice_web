@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Landing from './dev_page/Landing.vue'
+import PageNoFound from './dev_page/PageNoFound.vue'
+
 import StarterNavbar from './layout/StarterNavbar.vue'
 import StarterFooter from './layout/StarterFooter.vue'
 import Login from './dev_page/Login.vue'
@@ -241,6 +243,23 @@ let router = new Router({
 			meta: {
 				requiresAuth: true,
 				is_codaris: true,
+			},
+		},
+		{
+			path: '*',
+			name: 'PageNoFound',
+			components: {
+				default: PageNoFound,
+				header: StarterNavbar,
+				footer: StarterFooter,
+			},
+			props: {
+				header: {
+					colorOnScroll: 400,
+				},
+				footer: {
+					backgroundColor: 'black',
+				},
 			},
 		},
 	],

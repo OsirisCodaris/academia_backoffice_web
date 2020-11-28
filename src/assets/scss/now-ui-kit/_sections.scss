@@ -119,10 +119,11 @@
 	padding: 50px 0;
 
 	.image-container {
-		height: 335px;
+		height: 450px;
 		position: relative;
 		background-position: center center;
-		background-size: cover;
+		background-size: contain;
+		background-repeat: no-repeat;
 		box-shadow: $box-shadow-raised;
 		border-radius: 0.25rem;
 
@@ -153,7 +154,7 @@
 		min-height: 180px;
 		text-align: left;
 		position: absolute;
-		top: 376px;
+		top: 480px;
 		right: 155px;
 		z-index: 0;
 	}

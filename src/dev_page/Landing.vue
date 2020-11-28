@@ -6,19 +6,17 @@
 				style="background-image:url('img/dev/diplome.jpg')"
 			>
 			</parallax>
-			<div class="container m-5">
-				<div class="row ">
-					<div class="col-md-8">
-						<div class="content-center brand">
+			<div class="container ">
+				<div class="row">
+					<div class="col-md-6 col-12 mt-5">
+						<div class="text-center brand">
 							<img class="n-logo" src="logo.png" alt="" />
-							<h1 class="h1-seo">Academia Gabon</h1>
-							<h3>Découvrez notre application</h3>
+							<h1 class="h1-seo">ACADEMIA GABON</h1>
+							<h3>Pour tous les élèves de 3ème en Terminale</h3>
 							<h5 class="description">
-								According to the National Oceanic and Atmospheric
-								Administration, Ted, Scambos, NSIDClead scentist, puts the
-								potentially record low maximum sea ice extent tihs year down to
-								low ice extent in the Pacific and a late drop in ice extent in
-								the Barents Sea.
+								Découvrez votre banque de données académique et des professeurs
+								disponibles pour vous accompagner en ligne dans votre formation
+								scolaire
 							</h5>
 							<img
 								src="img/dev/playstore.png"
@@ -28,8 +26,8 @@
 							/>
 						</div>
 					</div>
-					<div class="col-md-4 content-right">
-						<img src="img/dev/phone1.png" alt="" class="img-fluid" />
+					<div class="col-md-6 d-fex justify-content-center mt-5 ">
+						<img src="img/dev/phone.png" alt="" class="img-fluid" />
 					</div>
 				</div>
 			</div>
@@ -40,10 +38,11 @@
 					<div class="col-md-8 ml-auto mr-auto text-center">
 						<h2 class="title">Academia Gabon, C'est quoi?</h2>
 						<h5 class="description">
-							According to the National Oceanic and Atmospheric Administration,
-							Ted, Scambos, NSIDClead scentist, puts the potentially record low
-							maximum sea ice extent tihs year down to low ice extent in the
-							Pacific and a late drop in ice extent in the Barents Sea.
+							Academia Gabon est une application mobile académique qui met à la
+							disposition des élèves du secondaire une banque de documents
+							(Devoirs, TD, Examen…) et leurs corrigés. De plus, l’application
+							intègrera un forum dans lequel les élèves auront l’assistance en
+							ligne d’enseignants qualifiés disponibles 7j/7.
 						</h5>
 					</div>
 				</div>
@@ -53,7 +52,7 @@
 						<div class="col-md-6">
 							<div
 								class="image-container image-left"
-								style="background-image: url('img/dev/circular.jpg')"
+								style="background-image: url('img/dev/paper.jpg')"
 							>
 								<!-- First image on the left side -->
 								<p class="blockquote blockquote-primary">
@@ -64,46 +63,59 @@
 									<small>-YOAN, Seconde S</small>
 								</p>
 							</div>
+
 							<!-- Second image on the left side of the article -->
 							<div
 								class="image-container"
-								style="background-image: url('img/dev/diagram.png')"
+								style="background-image: url('img/dev/desc.png')"
 							></div>
 						</div>
 						<div class="col-md-5">
 							<!-- First image on the right side, above the article -->
 							<div
 								class="image-container image-right"
-								style="background-image: url('img/dev/circle.jpg')"
+								style="background-image: url('img/dev/stay.png')"
 							></div>
-							<h3>
-								Construire la plus grande base de données numériques académiques
-							</h3>
+							<h2>
+								Nos objectifs
+							</h2>
+							<h5>Construire la plus grande banque de données académiques</h5>
 							<p>
-								The Arctic Ocean freezes every winter and much of the sea-ice
-								then thaws every summer, and that process will continue whatever
-								happens with climate change. Even if the Arctic continues to be
-								one of the fastest-warming regions of the world, it will always
-								be plunged into bitterly cold polar dark every winter. And
-								year-by-year, for all kinds of natural reasons, there’s huge
-								variety of the state of the ice.
+								Notre objectif est de collecter l'ensemble des documents
+								académiques (évaluations, examens et travaux dirigés) existants
+								au Gabon depuis le début du 21ème siècle. Conscients de
+								l'immense tâche qui nous incombe, nous avons constitué une
+								équipe d'enseignants dans diverses matières, chargée de
+								retrouver et corriger toutes ces ressources.
 							</p>
+							<h5>Rendre les documents accessibles</h5>
+
 							<p>
-								For a start, it does not automatically follow that a record
-								amount of ice will melt this summer. More important for
-								determining the size of the annual thaw is the state of the
-								weather as the midnight sun approaches and temperatures rise.
-								But over the more than 30 years of satellite records, scientists
-								have observed a clear pattern of decline, decade-by-decade.
+								Toutes nos ressources numériques seront accessibles via notre
+								application mobile. En fonction de votre profil (apprenant ou
+								enseignant), vous aurez accès à tous les documents de votre
+								classe si vous êtes apprenant et à toutes les ressources
+								numériques concernant votre matière si vous êtes un enseignant.
+								Un compte premium vous sera attribué après abonnement pour
+								bénéficier de plus de contenu sur l'application.
 							</p>
+							<h5>Forum académique</h5>
 							<p>
-								The Arctic Ocean freezes every winter and much of the sea-ice
-								then thaws every summer, and that process will continue whatever
-								happens with climate change. Even if the Arctic continues to be
-								one of the fastest-warming regions of the world, it will always
-								be plunged into bitterly cold polar dark every winter. And
-								year-by-year, for all kinds of natural reasons, there’s huge
-								variety of the state of the ice.
+								Uniquement disponible pour les comptes premium, le forum
+								académique est principalement destiné aux apprenants. Il
+								permettra aux élèves rencontrant des difficultés d'ordre
+								académique de poser, en toute liberté et quiétude, leurs
+								questions aux enseignants et personnels minutieusement désignés
+								par la structure Academia.
+							</p>
+							<h5>Cours particuliers</h5>
+							<p>
+								Les enseignants gagneront en visibilité via l'application. Ils
+								seront vus par toute la communauté générée via notre plateforme.
+								Les apprenants désireux de suivre des cours particuliers
+								pourront les joindre directement et discuter des modalités
+								d'inscriptions au cours. Cette option est uniquement disponible
+								pour les comptes premium.
 							</p>
 						</div>
 					</div>
@@ -118,7 +130,7 @@
 						<div class="col-md-4">
 							<div class="team-player">
 								<img
-									src="img/avatar.jpg"
+									src="img/default-avatar.png"
 									alt="Thumbnail Image"
 									class="rounded-circle img-fluid img-raised"
 								/>
@@ -144,7 +156,7 @@
 						<div class="col-md-4">
 							<div class="team-player">
 								<img
-									src="img/ryan.jpg"
+									src="img/default-avatar.png"
 									alt="Thumbnail Image"
 									class="rounded-circle img-fluid img-raised"
 								/>
@@ -169,7 +181,7 @@
 						<div class="col-md-4">
 							<div class="team-player">
 								<img
-									src="img/eva.jpg"
+									src="img/default-avatar.png"
 									alt="Thumbnail Image"
 									class="rounded-circle img-fluid img-raised"
 								/>
